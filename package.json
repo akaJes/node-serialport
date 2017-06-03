@@ -1,21 +1,21 @@
 {
-  "name": "serialport",
+  "name": "serialport-v4",
   "version": "4.0.7",
-  "description": "Node.js package to access serial ports. Welcome your robotic javascript overlords. Better yet, program them!",
+  "description": "fork with electron support of Node.js package to access serial ports. Welcome your robotic javascript overlords. Better yet, program them!",
   "author": {
     "name": "Chris Williams",
     "email": "voodootikigod@gmail.com",
     "url": "http://www.voodootikigod.com"
   },
   "binary": {
-    "module_name": "serialport",
+    "module_name": "serialport-v4",
     "module_path": "build/{configuration}/",
-    "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/4.0.7"
+    "host": "https://github.com/akaJes/node-serialport/releases/download/4.0.7"
   },
   "main": "./lib/serialport",
   "repository": {
     "type": "git",
-    "url": "git://github.com/EmergingTechnologyAdvisors/node-serialport.git"
+    "url": "git://github.com/akaJes/node-serialport.git"
   },
   "keywords": [
     "serialport",
@@ -73,6 +73,7 @@
     "mocha": "^2.4.5",
     "node-pre-gyp-github": "^1.1.2",
     "nyc": "^6.4.4",
+    "pre-gyp-pack": "^1.0.1",
     "sandboxed-module": "^2.0.3",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
@@ -88,12 +89,63 @@
     "serialport-term": "./bin/serialport-terminal.js"
   },
   "license": "MIT",
+  "pre-gyp-pack": {
+    "owner": "akaJes",
+    "repo": "node-serialport",
+    "platforms": {
+      "electron": {
+        "1.6.10": [
+          "ia32",
+          "x64"
+        ],
+        "1.4.16": [
+          "ia32",
+          "x64"
+        ],
+        "1.3.13": [
+          "ia32",
+          "x64"
+        ],
+        "1.2.8": [
+          "ia32",
+          "x64"
+        ],
+        "1.0.2": [
+          "ia32",
+          "x64"
+        ]
+      },
+      "node": {
+        "8.0.0": [
+          "ia32",
+          "x64"
+        ],
+        "7.10.0": [
+          "ia32",
+          "x64"
+        ],
+        "6.10.3": [
+          "ia32",
+          "x64"
+        ],
+        "5.12.0": [
+          "ia32",
+          "x64"
+        ],
+        "4.8.3": [
+          "ia32",
+          "x64"
+        ]
+      }
+    }
+  },
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
     "rebuild-all": "npm rebuild && node-gyp rebuild",
     "gyp-rebuild": "node-gyp rebuild",
     "stress": "mocha --no-timeouts test/arduinoTest/stress.js",
     "integration": "mocha test/arduinoTest/integration.js test/integration-lite.js",
+    "package": "pre-gyp-pack",
     "grunt": "grunt",
     "lint": "grunt --verbose lint",
     "test": "nyc grunt --verbose test",

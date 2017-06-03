@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': 'serialport',
+      'target_name': 'serialport-v4',
       'sources': [
         'src/serialport.cpp',
       ],
